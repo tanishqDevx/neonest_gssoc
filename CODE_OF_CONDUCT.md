@@ -1,4 +1,4 @@
-# ✨ Contributor Covenant Code of Conduct — GSSoC ✨
+# ✨ Contributor Covenant Code of Conduct — GSSoC
 
 ---
 
@@ -45,8 +45,9 @@ All contributions, including Pull Requests, are expected to align with this Code
 - 🤝 Accept review feedback gracefully, and provide constructive responses during code review or issue discussions.
 - 🧘‍♀ Remain calm and civil when resolving conflicts or differing technical opinions.
 
-Contributions that violate these expectations may be rejected or flagged for further enforcement as outlined below.
-For contribution workflow, coding standards, and how to get started, please refer to [CONTRIBUTING.md](CONTRIBUTING.md).
+>Contributions that violate these expectations may be rejected or flagged for further enforcement as outlined below.
+
+For contribution workflow, coding standards, and how to get started, please refer to [CONTRIBUTING.md](https://github.com/AditiGupta-tech/neonest/blob/main/Contributing.md)
 
 ---
 
@@ -102,10 +103,6 @@ This Code of Conduct is adapted from the [Contributor Covenant](https://www.cont
 
 Enforcement guidelines inspired by [Mozilla’s code of conduct enforcement ladder](https://github.com/mozilla/diversity).
 
----
-
-## 📘 Further Reading
-For contribution workflow, coding standards, and how to get started, please refer to our CONTRIBUTING.md guide.
 
 ---
 
