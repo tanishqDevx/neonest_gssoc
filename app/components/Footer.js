@@ -204,54 +204,6 @@ const Footer = () => {
                 </a>
               </div>
             </div>
-
-            {/* Contact Info */}
-            <div>
-              <h5 className="font-medium text-sm mb-3 text-gray-700">Contact</h5>
-              <div className="space-y-2 text-sm text-gray-600">
-                <div className="flex items-center gap-2 py-1">
-                  <Mail className="w-4 h-4 text-pink-500" />
-                  <span>support@neonest.com</span>
-                </div>
-                <div className="flex items-center gap-2 py-1">
-                  <Phone className="w-4 h-4 text-pink-500" />
-                  <span>1-800-NEONEST</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Social Links */}
-            <div className="mt-4">
-              <div className="flex items-center gap-3">
-                <motion.a 
-                  href="#" 
-                  className="text-gray-400 hover:text-pink-500 transition-colors p-2 rounded-full hover:bg-pink-50"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Instagram className="w-5 h-5" />
-                </motion.a>
-                <motion.a 
-                  href="#" 
-                  className="text-gray-400 hover:text-pink-500 transition-colors p-2 rounded-full hover:bg-pink-50"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Facebook className="w-5 h-5" />
-                </motion.a>
-                <motion.a 
-                  href="#" 
-                  className="text-gray-400 hover:text-pink-500 transition-colors p-2 rounded-full hover:bg-pink-50"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Twitter className="w-5 h-5" />
-                </motion.a>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Footer Bottom */}
         <div className="border-t border-pink-200 pt-6 text-center">
           <motion.div 
