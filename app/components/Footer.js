@@ -1,233 +1,189 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, Facebook, Twitter, Instagram, Github, ExternalLink, Users, MessageSquare } from "lucide-react";
-import { motion } from "framer-motion";
+import {
+  Heart,
+  Github,
+  ExternalLink,
+  BookOpen,
+  MessageCircle,
+} from "lucide-react";
 
-// Soft Floating Hearts Background Component
-const FloatingHeartsBackground = () => {
-  const hearts = Array.from({ length: 15 }, (_, i) => ({
-    id: i,
-    size: Math.random() * 20 + 10,
-    left: Math.random() * 100,
-    animationDelay: Math.random() * 20,
-    duration: Math.random() * 10 + 15,
-  }));
+export default function NeoNestFooter() {
+  const features = [
+    { name: "Growth Tracker", href: "/Growth" },
+    { name: "Feed Scheduler", href: "/Feeding" },
+    { name: "Sleep Tracker", href: "/Sleep" },
+    { name: "Vaccine Tracker", href: "/Medical" },
+    { name: "Inventory Tracker", href: "/Essentials" },
+  ];
 
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {hearts.map((heart) => (
-        <motion.div
-          key={heart.id}
-          className="absolute text-pink-200/20"
-          style={{
-            left: `${heart.left}%`,
-            fontSize: `${heart.size}px`,
-          }}
-          animate={{
-            y: [-20, -100],
-            opacity: [0, 0.6, 0],
-            scale: [0.8, 1.2, 0.8],
-          }}
-          transition={{
-            duration: heart.duration,
-            repeat: Infinity,
-            delay: heart.animationDelay,
-            ease: "easeInOut",
-          }}
-        >
-          ❤️
-        </motion.div>
-      ))}
-    </div>
-  );
-};
+  const support = [
+    { name: "About NeoNest", href: "/" },
+    { name: "FAQs", href: "/Faqs" },
+    { name: "Resources", href: "/Resources" },
+    { name: "NeoNest AI", href: "/NeonestAi" },
+    { name: "Memories, Community & Blogs", href: "/Memories" },
+  ];
 
-// Soft Gradient Orbs Background
-const SoftGradientOrbs = () => {
-  const orbs = Array.from({ length: 8 }, (_, i) => ({
-    id: i,
-    size: Math.random() * 200 + 100,
-    left: Math.random() * 100,
-    top: Math.random() * 100,
-    duration: Math.random() * 20 + 15,
-  }));
+  const projectLinks = [
+    {
+      name: "GitHub Repository",
+      icon: Github,
+      href: "https://github.com/AditiGupta-tech/neonest",
+    },
+    {
+      name: "Live Website",
+      icon: ExternalLink,
+      href: "https://neonest-babycare.vercel.app/",
+    },
+    {
+      name: "Contributing Guide",
+      icon: BookOpen,
+      href: "https://github.com/AditiGupta-tech/neonest/blob/main/Contributing.md",
+    },
+    {
+      name: "GitHub Discussions",
+      icon: MessageCircle,
+      href: "https://github.com/AditiGupta-tech/neonest/discussions",
+    },
+  ];
 
   return (
-    <div className="absolute inset-0 overflow-hidden">
-      {orbs.map((orb) => (
-        <motion.div
-          key={orb.id}
-          className="absolute rounded-full opacity-10"
-          style={{
-            width: `${orb.size}px`,
-            height: `${orb.size}px`,
-            left: `${orb.left}%`,
-            top: `${orb.top}%`,
-            background: `radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, rgba(219, 39, 119, 0.1) 50%, transparent 100%)`,
-          }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.1, 0.2, 0.1],
-            x: [-20, 20, -20],
-            y: [-20, 20, -20],
-          }}
-          transition={{
-            duration: orb.duration,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-    </div>
-  );
-};
+    <div className="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex flex-col justify-end">
+      <footer className="bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 text-white relative overflow-hidden shadow-2xl">
+        {/* Decorative top border */}
+        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-pink-400/60 to-transparent"></div>
 
-const Footer = () => {
-  return (
-    <footer className="relative bg-gradient-to-br from-pink-50 via-white to-rose-50 text-gray-800 py-12 px-4 overflow-hidden border-t border-pink-100">
-      {/* Soft Background Effects */}
-      <SoftGradientOrbs />
-      <FloatingHeartsBackground />
-      
-      {/* Main Content */}
-      <div className="container mx-auto relative z-10">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
-          {/* Brand and Description */}
-          <div className="md:col-span-1">
-            <div className="flex items-center gap-x-2 mb-4">
-              <Image
-                src="/logoFooter.png"
-                alt="NeoNest Logo"
-                width={40}
-                height={40}
-                className="object-contain"  
-              />
-              <span className="font-semibold text-xl text-pink-600">NeoNest</span>
-            </div>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Supporting parents through their baby's incredible first year with expert guidance, AI assistance, and a loving community—making parenting 10x easier, calmer, and more connected.
-            </p>
-            <p className="text-pink-500 font-medium text-sm mt-2">
-              Happy baby, Happy you! ❤️
-            </p>
-          </div>
+        {/* Subtle floating elements */}
+        <div className="absolute top-6 left-8 w-16 h-16 bg-pink-400/8 rounded-full blur-xl"></div>
+        <div className="absolute top-8 right-12 w-20 h-20 bg-blue-400/8 rounded-full blur-xl"></div>
+        <div className="absolute bottom-8 left-1/3 w-18 h-18 bg-purple-400/8 rounded-full blur-xl"></div>
 
-          {/* Features */}
-          <div>
-            <h4 className="font-semibold text-lg mb-4 text-pink-600">Features</h4>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li>
-                <Link href="/Growth" className="hover:text-pink-500 transition-colors block py-1 hover:translate-x-1 transform duration-200">
-                  Growth Tracker
-                </Link>
-              </li>
-              <li>
-                <Link href="/Feeding" className="hover:text-pink-500 transition-colors block py-1 hover:translate-x-1 transform duration-200">
-                  Feed Scheduler
-                </Link>
-              </li>
-              <li>
-                <Link href="/Sleep" className="hover:text-pink-500 transition-colors block py-1 hover:translate-x-1 transform duration-200">
-                  Sleep Tracker
-                </Link>
-              </li>
-              <li>
-                <Link href="/Medical" className="hover:text-pink-500 transition-colors block py-1 hover:translate-x-1 transform duration-200">
-                  Vaccine Tracker
-                </Link>
-              </li>
-              <li>
-                <Link href="/Essentials" className="hover:text-pink-500 transition-colors block py-1 hover:translate-x-1 transform duration-200">
-                  Inventory Tracker
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Support */}
-          <div>
-            <h4 className="font-semibold text-lg mb-4 text-pink-600">Support</h4>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li>
-                <Link href="/" className="hover:text-pink-500 transition-colors block py-1 hover:translate-x-1 transform duration-200">
-                  About NeoNest
-                </Link>
-              </li>
-              <li>
-                <Link href="/Faqs" className="hover:text-pink-500 transition-colors block py-1 hover:translate-x-1 transform duration-200">
-                  FAQs
-                </Link>
-              </li>
-              <li>
-                <Link href="/Resources" className="hover:text-pink-500 transition-colors block py-1 hover:translate-x-1 transform duration-200">
-                  Resources
-                </Link>
-              </li>
-              <li>
-                <Link href="/NeonestAi" className="hover:text-pink-500 transition-colors block py-1 hover:translate-x-1 transform duration-200">
-                  NeoNest AI
-                </Link>
-              </li>
-              <li>
-                <Link href="/Memories" className="hover:text-pink-500 transition-colors block py-1 hover:translate-x-1 transform duration-200">
-                  Memories, Community & Blogs
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Project Links & Contact */}
-          <div>
-            <h4 className="font-semibold text-lg mb-4 text-pink-600">Project Links</h4>
-            
-            {/* Project Links */}
-            <div className="mb-6">
-              <div className="space-y-2 text-sm text-gray-600">
-                <a href="https://github.com/AditiGupta-tech/neonest" className="flex items-center gap-2 hover:text-pink-500 transition-colors py-1 hover:translate-x-1 transform duration-200">
-                  <Github className="w-4 h-4" />
-                  <span>GitHub Repository</span>
-                </a>
-                <a href="https://neonest-babycare.vercel.app/" className="flex items-center gap-2 hover:text-pink-500 transition-colors py-1 hover:translate-x-1 transform duration-200">
-                  <ExternalLink className="w-4 h-4" />
-                  <span>Live Website</span>
-                </a>
-                <a href="https://github.com/AditiGupta-tech/neonest/blob/main/Contributing.md" className="flex items-center gap-2 hover:text-pink-500 transition-colors py-1 hover:translate-x-1 transform duration-200">
-                  <Users className="w-4 h-4" />
-                  <span>Contributing Guide</span>
-                </a>
-                <a href="https://github.com/AditiGupta-tech/neonest/discussions" className="flex items-center gap-2 hover:text-pink-500 transition-colors py-1 hover:translate-x-1 transform duration-200">
-                  <MessageSquare className="w-4 h-4" />
-                  <span>GitHub Discussions</span>
-                </a>
+        <div className="max-w-6xl mx-auto px-6 py-12 relative">
+          {/* Main footer content */}
+          <div className="flex flex-wrap lg:flex-nowrap lg:gap-20 mb-8">
+            {/* Brand */}
+            <div className="flex-shrink-0 lg:w-72 mb-8 lg:mb-0">
+              <div className="space-y-3">
+                <div className="flex items-center space-x-2">
+                  <div className="flex items-center gap-x-1 mb-2">
+                    <Image
+                      src="/logoFooter.png"
+                      alt="NeoNest Logo"
+                      width={40}
+                      height={40}
+                      className="object-contain -mt-1.5"
+                    />
+                  </div>
+                  <span className="text-xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+                    NeoNest
+                  </span>
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Supporting parents through their baby's incredible first year
+                  with expert guidance, AI assistance, and a loving
+                  community—making parenting 10x easier, calmer, and more
+                  connected.
+                </p>
+                <div className="flex items-center space-x-2 text-pink-400 font-medium text-sm">
+                  <span>Happy baby, Happy you!</span>
+                  <Heart className="w-4 h-4 fill-current animate-pulse" />
+                </div>
               </div>
             </div>
-        {/* Footer Bottom */}
-        <div className="border-t border-pink-200 pt-6 text-center">
-          <motion.div 
-            className="flex flex-col md:flex-row items-center justify-between gap-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-sm text-gray-600">
-              © 2025 NeoNest by <span className="text-pink-600 font-medium">Aditi Gupta</span>. 
-              Released under the <span className="text-pink-600">MIT License</span>.
-            </p>
-            <p className="text-sm text-gray-600">
-              Made with <motion.span 
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1, repeat: Infinity }}
-                className="text-pink-500 inline-block"
-              >❤️</motion.span> for parents and babies.
-            </p>
-          </motion.div>
-        </div>
-      </div>
-    </footer>
-  );
-};
 
-export default Footer;
+            {/* Features */}
+            <div className="min-w-0 flex-1 mb-6 lg:mb-0">
+              <h3 className="text-base font-semibold text-white mb-3 flex items-center">
+                <div className="w-1.5 h-4 bg-gradient-to-b from-pink-400 to-purple-400 rounded-full mr-2"></div>
+                Features
+              </h3>
+              <ul className="space-y-1.5">
+                {features.map((item, index) => (
+                  <li key={index} className="group">
+                    <Link
+                      href={item.href}
+                      className="text-gray-300 hover:text-pink-300 transition-colors duration-200 flex items-center text-sm"
+                    >
+                      <span className="w-1 h-1 bg-pink-400/70 rounded-full mr-2 group-hover:bg-pink-300 transition-colors"></span>
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Support */}
+            <div className="min-w-0 flex-1 mb-6 lg:mb-0">
+              <h3 className="text-base font-semibold text-white mb-3 flex items-center">
+                <div className="w-1.5 h-4 bg-gradient-to-b from-blue-400 to-purple-400 rounded-full mr-2"></div>
+                Support
+              </h3>
+              <ul className="space-y-1.5">
+                {support.map((item, index) => (
+                  <li key={index} className="group">
+                    <Link
+                      href={item.href}
+                      className="text-gray-300 hover:text-blue-300 transition-colors duration-200 flex items-center text-sm"
+                    >
+                      <span className="w-1 h-1 bg-blue-400/70 rounded-full mr-2 group-hover:bg-blue-300 transition-colors"></span>
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Project Links */}
+            <div className="min-w-0 flex-1">
+              <h3 className="text-base font-semibold text-white mb-3 flex items-center">
+                <div className="w-1.5 h-4 bg-gradient-to-b from-green-400 to-blue-400 rounded-full mr-2"></div>
+                Project Links
+              </h3>
+              <ul className="space-y-1.5">
+                {projectLinks.map((link, index) => {
+                  const Icon = link.icon;
+                  return (
+                    <li key={index} className="group">
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-300 hover:text-green-300 transition-colors duration-200 flex items-center text-sm"
+                      >
+                        <span className="w-1 h-1 bg-green-400/70 rounded-full mr-2 group-hover:bg-green-300 transition-colors"></span>
+                        <Icon className="w-4 h-4 mr-2" />
+                        {link.name}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom section */}
+          <div className="border-t border-white/20 pt-4">
+            <div className="text-center space-y-1">
+              <div className="text-gray-300 text-sm flex items-center justify-center space-x-2">
+                <span>© 2025 NeoNest by</span>
+                <span className="font-semibold text-pink-300">Aditi Gupta</span>
+                <span>• Released under the</span>
+                <span className="font-semibold text-blue-300">
+                  MIT License
+                </span>
+              </div>
+              <div className="flex items-center justify-center space-x-2 text-gray-300 text-sm">
+                <span>Made with</span>
+                <Heart className="w-4 h-4 text-red-400 fill-current animate-pulse" />
+                <span>for parents and babies</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
