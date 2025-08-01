@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import GoToTop from "./components/GoToTop";
 import { AuthProvider } from "./context/AuthContext";
+import { NotificationProvider } from "./context/NotificationContext";
 // import Chatbot from "./components/Chatbot";
 
 const geistSans = Geist({
@@ -29,10 +30,13 @@ export default function RootLayout({ children }) {
         className={`w-screen flex flex-col min-h-screen overflow-x-hidden ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-          <Navbar />
-          <main className="w-full flex-grow">{children}</main>
-          <Footer />
-          <GoToTop />
+
+          <NotificationProvider>
+            <Navbar />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+            <GoToTop />
+          </NotificationProvider>
         </AuthProvider>
       </body>
     </html>
