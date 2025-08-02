@@ -10,6 +10,8 @@ import { Button } from "../components/ui/Button";
 import Input from "../components/ui/Input";
 import Badge from "../components/ui/Badge";
 import ReactMarkdown from "react-markdown";
+import SpeechRecognition from "../components/SpeechRecognition";
+import TextToSpeech from "../components/TextToSpeech";
 
 import { fetchChatHistory, saveChatHistory } from "@/lib/chatService";
 import { useAuth } from "../context/AuthContext";
@@ -35,6 +37,7 @@ export default function NeonestAi() {
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [isHistoryLoading, setIsHistoryLoading] = useState(false);
+  const [isListening, setIsListening] = useState(false);
 
   const [analytics, setAnalytics] = useState({
     totalChats: 1247,
@@ -158,6 +161,12 @@ export default function NeonestAi() {
     handleSubmit(null, question);
   };
 
+  const handleSpeechTranscript = (transcript) => {
+    setInput(transcript);
+    // Don't auto-send, let user review and send manually
+    // This prevents network issues and gives user control
+  };
+
   const formatTime = (isoString) => {
     const date = new Date(isoString);
     return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
@@ -247,6 +256,20 @@ export default function NeonestAi() {
                           <TooltipContent>Copy to clipboard</TooltipContent>
                         </Tooltip>
                       </TooltipProvider>
+                      
+                      {/* Text-to-Speech button for AI responses */}
+                      {m.role === "assistant" && (
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <div>
+                                <TextToSpeech text={m.content} />
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent>Listen to response</TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      )}
                     </div>
 
                     <div className="prose prose-sm max-w-full text-sm">
@@ -270,6 +293,13 @@ export default function NeonestAi() {
 
                     <span className={`text-xs block mt-1 ${m.role === "user" ? "text-gray-300" : "text-pink-700"}`}>{formatTime(m.createdAt)}</span>
                   </div>
+                  
+                  {/* Listen to Response button for AI messages */}
+                  {m.role === "assistant" && (
+                    <div className="flex justify-start mt-2">
+                      <TextToSpeech text={m.content} />
+                    </div>
+                  )}
                 </div>
               ))}
 
@@ -300,7 +330,30 @@ export default function NeonestAi() {
           )}
 
           <form onSubmit={handleSubmit} className="flex gap-2 pt-4 items-center">
-            <Input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Ask me about baby care..." className="flex-1 border-pink-300" disabled={isSending} />
+            <Input 
+              value={input} 
+              onChange={(e) => setInput(e.target.value)} 
+              placeholder={isListening ? "Listening... Speak now..." : "Ask me about baby care..."} 
+              className={`flex-1 ${isListening ? 'border-green-500 bg-green-50' : 'border-pink-300'}`} 
+              disabled={isSending} 
+            />
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div>
+                    <SpeechRecognition 
+                      onTranscript={handleSpeechTranscript}
+                      isListening={isListening}
+                      setIsListening={setIsListening}
+                      disabled={isSending}
+                    />
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent side="top">
+                  Click to start voice input (requires internet connection)
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
             <Button type="submit" disabled={isSending || !input.trim()} className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600">
               {isSending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
             </Button>
