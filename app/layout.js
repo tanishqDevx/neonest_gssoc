@@ -2,7 +2,11 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import GoToTop from "./components/GoToTop";
 import { AuthProvider } from "./context/AuthContext";
+import { NotificationProvider } from "./context/NotificationContext";
+import { AutoTaskProvider } from "./context/AutoTaskContext";
+import AutoTaskManager from "./components/AutoTaskManager";
 // import Chatbot from "./components/Chatbot";
 
 const geistSans = Geist({
@@ -25,12 +29,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`flex flex-col min-h-screen ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`w-screen flex flex-col min-h-screen overflow-x-hidden ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-          <Navbar />
-          <main className="flex-grow">{children}</main>
-          <Footer />
+          <AutoTaskProvider>
+            <NotificationProvider>
+              <Navbar />
+              <main className="flex-grow">{children}</main>
+              <AutoTaskManager/>
+              <Footer />
+              <GoToTop />
+            </NotificationProvider>
+          </AutoTaskProvider>
         </AuthProvider>
       </body>
     </html>
